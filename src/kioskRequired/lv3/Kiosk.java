@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Kiosk {
     //속성
-    List<MenuItem> menuItemList = new ArrayList<>();
+    List<kioskRequired.lv3.MenuItem> menuItemList = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
 
     //생성자
@@ -19,10 +19,10 @@ public class Kiosk {
 
     public void startKiosk() {
 
-        MenuItem shackBurger = new MenuItem("쉑버거", 6900, "토마토, 양상추, 쉑소스가 토핑된 시그니처 버거");
-        MenuItem smokeBurger = new MenuItem("스모크버거", 8900, "베이컨, 체리 페퍼에 쉑소스가 토핑된 치즈버거");
-        MenuItem cheeseBurger = new MenuItem("치즈버거", 6900, "포테이토 번과 비프패티, 치즈가 토핑된 치즈버거");
-        MenuItem hamBurger = new MenuItem("햄버거", 5400, "비프패티를 기반으로 채소가 들어간 기본버거");
+        kioskRequired.lv3.MenuItem shackBurger = new kioskRequired.lv3.MenuItem("쉑버거", 6900, "토마토, 양상추, 쉑소스가 토핑된 시그니처 버거");
+        kioskRequired.lv3.MenuItem smokeBurger = new kioskRequired.lv3.MenuItem("스모크버거", 8900, "베이컨, 체리 페퍼에 쉑소스가 토핑된 치즈버거");
+        kioskRequired.lv3.MenuItem cheeseBurger = new kioskRequired.lv3.MenuItem("치즈버거", 6900, "포테이토 번과 비프패티, 치즈가 토핑된 치즈버거");
+        kioskRequired.lv3.MenuItem hamBurger = new kioskRequired.lv3.MenuItem("햄버거", 5400, "비프패티를 기반으로 채소가 들어간 기본버거");
 
         menuItemList.add(shackBurger);
         menuItemList.add(smokeBurger);
@@ -46,7 +46,7 @@ public class Kiosk {
                     System.out.println("-------------------------------------------------");
                     System.out.println("[ 쉑쉑 메뉴 ]");
                     int burgerIndex = 0;
-                    for (MenuItem burger : menuItemList) {
+                    for (kioskRequired.lv3.MenuItem burger : menuItemList) {
                         System.out.println((burgerIndex + 1) + ". " + burger.toString());
                         burgerIndex++;
                     }

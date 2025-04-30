@@ -1,27 +1,63 @@
 package kioskRequired.lv4;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Scanner;
 
 public class Menu {
-   //속성
-   private List<kioskRequired.lv4.MenuItem> menuItemList = new ArrayList<>();
+    Scanner sc = new Scanner(System.in);
+    //속성
+    List<MenuItem> menuItemList = new ArrayList<>();
 
-   //생성자
-   //기능
-   public void burgerMenu() {
 
-      kioskRequired.lv4.MenuItem shackBurger = new kioskRequired.lv4.MenuItem("쉑버거", 6900, "토마토, 양상추, 쉑소스가 토핑된 시그니처 버거");
-      kioskRequired.lv4.MenuItem smokeBurger = new kioskRequired.lv4.MenuItem("스모크버거", 8900, "베이컨, 체리 페퍼에 쉑소스가 토핑된 치즈버거");
-      kioskRequired.lv4.MenuItem cheeseBurger = new kioskRequired.lv4.MenuItem("치즈버거", 6900, "포테이토 번과 비프패티, 치즈가 토핑된 치즈버거");
-      kioskRequired.lv4.MenuItem hamBurger = new kioskRequired.lv4.MenuItem("햄버거", 5400, "비프패티를 기반으로 채소가 들어간 기본버거");
+    //생성자
+    public Menu(){}
+    //기능
+    public void addBurgerMenu(){
+        MenuItem shackBurger = new MenuItem("쉑버거", 6900, "토마토, 양상추, 쉑소스가 토핑된 시그니처 버거");
+        MenuItem smokeBurger = new MenuItem("스모크버거", 8900, "베이컨, 체리 페퍼에 쉑소스가 토핑된 치즈버거");
+        MenuItem cheeseBurger = new MenuItem("치즈버거", 6900, "포테이토 번과 비프패티, 치즈가 토핑된 치즈버거");
+        MenuItem hamBurger = new MenuItem("햄버거", 5400, "비프패티를 기반으로 채소가 들어간 기본버거");
+        this.menuItemList.add(shackBurger);
+        this.menuItemList.add(smokeBurger);
+        this.menuItemList.add(cheeseBurger);
+        this.menuItemList.add(hamBurger);
+    }
+    public int mainMenu() {
 
-      menuItemList.add(shackBurger);
-      menuItemList.add(smokeBurger);
-      menuItemList.add(cheeseBurger);
-      menuItemList.add(hamBurger);
-   }
 
+        System.out.print("원하시는 메뉴의 숫자를 입력해주세요 : ");
+        System.out.println("-------------------------------------------------");
+        System.out.println("[ 메인 메뉴 ]");
+        System.out.println("1. 버거");
+        System.out.println("2. 음료");
+        System.out.println("3. 디저트");
+        System.out.println("0. 종료");
+        System.out.println("-------------------------------------------------");
+        System.out.print("원하시는 기능을 숫자로 입력해주세요 : ");
+        try {
+            int mainInputBox = sc.nextInt();
+            return mainInputBox;
+        }catch(InputMismatchException e){
+            System.out.println("되냐");
+        }
+
+//        while ((0 <= mainInputBox) != (mainInputBox <= 3)) {
+//            try {
+//                while ((0 <= mainInputBox) != (mainInputBox <= 4)) {
+//                    System.out.print("정해진 범위의 숫자만 입력해 주세요 : ");
+//                    mainInputBox = sc.nextInt();
+//                }
+//            } catch ( ) {
+//                System.out.print(" 숫자만 입력 해 주세요 : ");
+//                mainInputBox = sc.nextInt();
+//            }
+//
+//        }
+
+        return 0;
+    }
 }
 //
 //      int mainInputBox = sc.nextInt();
@@ -65,7 +101,6 @@ public class Menu {
 //
 //   }
 //}
-
 
 
 //        try {

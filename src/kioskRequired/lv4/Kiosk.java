@@ -1,60 +1,71 @@
 package kioskRequired.lv4;
 
-import kioskRequired.lv2.MenuItem;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Kiosk {
     //속성
-    private List<kioskRequired.lv4.MenuItem> menuItemList = new ArrayList<>();
-
-    private Scanner sc = new Scanner(System.in);
+    private final Menu menu = new Menu();
+    private final Scanner sc = new Scanner(System.in);
 
     //생성자
     public Kiosk() {
 
     }
+
     //기능
-
+//    public void burgerList(){
+//        for (MenuItem list : menu.menuItemList){
+//             System.out.println("리스트"+ list);
+//        }
+//
+//    }
+//menu.menuItemList.get(0) 이거였꾸나아아아아아아아 gygim thanks
     public void startKiosk() {
+        menu.addBurgerMenu();
+        switch (menu.mainMenu()) {
 
-        System.out.print("원하시는 메뉴의 숫자를 입력해주세요 : ");
-        System.out.println("-------------------------------------------------");
-        System.out.println("[ 메인 메뉴 ]");
-        System.out.println("1. 버거");
-        System.out.println("2. 음료");
-        System.out.println("3. 디저트");
-        System.out.println("0. 종료");
-        System.out.println("-------------------------------------------------");
-        System.out.print("원하시는 기능을 숫자로 입력해주세요 : ");
-        int mainInputBox = sc.nextInt();
-
-        switch (mainInputBox) {
             case 1:
                 System.out.println("-------------------------------------------------");
                 System.out.println("[ 쉑쉑 메뉴 ]");
                 int burgerIndex = 0;
-                for (kioskRequired.lv4.MenuItem burger : menuItemList) {
+                // menu.menuItemList -> menu클래스안에서 생성된 List<MenuItem>menuItemList를 사용하겠다
+//                burgerList();
+                for (MenuItem burger : menu.menuItemList) {
                     System.out.println((burgerIndex + 1) + ". " + burger.toString());
                     burgerIndex++;
                 }
                 // ArrayList<>()를 객체화 하여 List<MenuItem>에 add한 데이터들을 MenuItem클래스에서 toString하여 for문으로 출력
-                System.out.println("0. 종료         | 종료");
+                System.out.println("0. 뒤로가기");
                 System.out.println("-------------------------------------------------");
                 System.out.print("원하시는 메뉴를 숫자로 입력해 주세요 : ");
-
                 int burgerInputBox = sc.nextInt();
-                try {
-                    while ((0 <= burgerInputBox) != (burgerInputBox <= menuItemList.size())) {
-                        System.out.print("정해진 범위의 숫자만 입력해 주세요 : ");
+                while ((0 <= burgerInputBox) != (burgerInputBox <= menu.menuItemList.size())) {
+                    try {
+                        while ((0 <= burgerInputBox) != (burgerInputBox <= menu.menuItemList.size())) {
+                            System.out.print("정해진 범위의 숫자만 입력해 주세요 : ");
+                            burgerInputBox = sc.nextInt();
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.print(" 숫자만 입력 해 주세요 : ");
                         burgerInputBox = sc.nextInt();
                     }
-                } catch (RuntimeException e2) {
-                    //숫자 외의 문자열을 입력 하였을 때
-                    System.out.print(" 숫자만 입력 해 주세요 : ");
-                    burgerInputBox = sc.nextInt();
+                }
+                switch (burgerInputBox) {
+                    case 1:
+                        System.out.println(menu.menuItemList.get(0));
+                        break;
+                    case 2:
+                        System.out.println(menu.menuItemList.get(1));
+                        break;
+                    case 3:
+                        System.out.println(menu.menuItemList.get(2));
+                        break;
+                    case 4:
+                        System.out.println(menu.menuItemList.get(4));
+                        break;
+                    case 0:
+                        menu.mainMenu();
+
                 }
                 if (burgerInputBox == 0) {
                     System.out.println("주문을 종료합니다");
@@ -67,10 +78,8 @@ public class Kiosk {
                 break;
 
         }
-
     }
 }
-
 
 
 //        try {
