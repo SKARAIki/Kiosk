@@ -1,5 +1,6 @@
 package kioskRequired.lv4;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Kiosk {
@@ -21,7 +22,9 @@ public class Kiosk {
 //    }
 //menu.menuItemList.get(0) 이거였꾸나아아아아아아아 gygim thanks
     public void startKiosk() {
-        menu.addBurgerMenu();
+
+
+
         switch (menu.mainMenu()) {
 
             case 1:
@@ -38,18 +41,26 @@ public class Kiosk {
                 System.out.println("0. 뒤로가기");
                 System.out.println("-------------------------------------------------");
                 System.out.print("원하시는 메뉴를 숫자로 입력해 주세요 : ");
-                int burgerInputBox = sc.nextInt();
-                while ((0 <= burgerInputBox) != (burgerInputBox <= menu.menuItemList.size())) {
+
+                int burgerInputBox = 0;
+                while (true) {
                     try {
+                        burgerInputBox = sc.nextInt();
+
                         while ((0 <= burgerInputBox) != (burgerInputBox <= menu.menuItemList.size())) {
                             System.out.print("정해진 범위의 숫자만 입력해 주세요 : ");
                             burgerInputBox = sc.nextInt();
+
                         }
-                    } catch (NumberFormatException e) {
-                        System.out.print(" 숫자만 입력 해 주세요 : ");
-                        burgerInputBox = sc.nextInt();
+                    } catch (InputMismatchException e) {
+                        System.out.println(" 숫자만 입력 해 주세요  ");
+                        sc.next();
+//                  숫자가 아닌 문자열을 입력 했을 때 menu.mainMenu의 내용이 실행이 되는데 어떤 로직으로 저게 실행이 되는지 모름..
+//                  실행되었을 때 sc.nextInt
                     }
+                    break;
                 }
+
                 switch (burgerInputBox) {
                     case 1:
                         System.out.println(menu.menuItemList.get(0));
@@ -61,19 +72,19 @@ public class Kiosk {
                         System.out.println(menu.menuItemList.get(2));
                         break;
                     case 4:
-                        System.out.println(menu.menuItemList.get(4));
+                        System.out.println(menu.menuItemList.get(3));
                         break;
                     case 0:
                         menu.mainMenu();
 
                 }
                 if (burgerInputBox == 0) {
-                    System.out.println("주문을 종료합니다");
+                    System.out.println("1주문을 종료합니다");
                     sc.close();
                     break;
                 }
             case 0:
-                System.out.println("주문을 종료합니다");
+                System.out.println("2주문을 종료합니다");
                 sc.close();
                 break;
 

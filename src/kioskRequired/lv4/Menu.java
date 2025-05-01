@@ -12,35 +12,46 @@ public class Menu {
 
 
     //생성자
-    public Menu(){}
-    //기능
-    public void addBurgerMenu(){
-        MenuItem shackBurger = new MenuItem("쉑버거", 6900, "토마토, 양상추, 쉑소스가 토핑된 시그니처 버거");
-        MenuItem smokeBurger = new MenuItem("스모크버거", 8900, "베이컨, 체리 페퍼에 쉑소스가 토핑된 치즈버거");
-        MenuItem cheeseBurger = new MenuItem("치즈버거", 6900, "포테이토 번과 비프패티, 치즈가 토핑된 치즈버거");
-        MenuItem hamBurger = new MenuItem("햄버거", 5400, "비프패티를 기반으로 채소가 들어간 기본버거");
-        this.menuItemList.add(shackBurger);
-        this.menuItemList.add(smokeBurger);
-        this.menuItemList.add(cheeseBurger);
-        this.menuItemList.add(hamBurger);
+    public Menu() {
     }
+
+    //기능
+    public void addBurgerMenu() {
+
+    }
+
     public int mainMenu() {
 
 
-        System.out.print("원하시는 메뉴의 숫자를 입력해주세요 : ");
-        System.out.println("-------------------------------------------------");
-        System.out.println("[ 메인 메뉴 ]");
-        System.out.println("1. 버거");
-        System.out.println("2. 음료");
-        System.out.println("3. 디저트");
-        System.out.println("0. 종료");
-        System.out.println("-------------------------------------------------");
-        System.out.print("원하시는 기능을 숫자로 입력해주세요 : ");
-        try {
-            int mainInputBox = sc.nextInt();
-            return mainInputBox;
-        }catch(InputMismatchException e){
-            System.out.println("되냐");
+
+        while (true) {
+            MenuItem shackBurger = new MenuItem("쉑버거", 6900, "토마토, 양상추, 쉑소스가 토핑된 시그니처 버거");
+            MenuItem smokeBurger = new MenuItem("스모크버거", 8900, "베이컨, 체리 페퍼에 쉑소스가 토핑된 치즈버거");
+            MenuItem cheeseBurger = new MenuItem("치즈버거", 6900, "포테이토 번과 비프패티, 치즈가 토핑된 치즈버거");
+            MenuItem hamBurger = new MenuItem("햄버거", 5400, "비프패티를 기반으로 채소가 들어간 기본버거");
+            this.menuItemList.add(shackBurger);
+            this.menuItemList.add(smokeBurger);
+            this.menuItemList.add(cheeseBurger);
+            this.menuItemList.add(hamBurger);
+
+            System.out.print("원하시는 메뉴의 숫자를 입력해주세요 : ");
+            System.out.println("-------------------------------------------------");
+            System.out.println("[ 메인 메뉴 ]");
+            System.out.println("1. 버거");
+            System.out.println("2. 음료");
+            System.out.println("3. 디저트");
+            System.out.println("0. 종료");
+            System.out.println("-------------------------------------------------");
+            System.out.print("원하시는 기능을 숫자로 입력해주세요 : ");
+            try {
+                int mainInputBox = sc.nextInt();
+                return mainInputBox;
+            } catch (InputMismatchException e) {
+                System.out.println("*********경고*********");
+                System.out.println("숫자로 입력하여 주십시오");
+                sc.next(); // 문자열을 입력했기 때문에 nextInt는 불가
+                // 트러블슈팅 예외처리
+            }
         }
 
 //        while ((0 <= mainInputBox) != (mainInputBox <= 3)) {
@@ -56,7 +67,7 @@ public class Menu {
 //
 //        }
 
-        return 0;
+
     }
 }
 //
